@@ -26,16 +26,17 @@ public class OlaController {
 
 		String paramNome = request.getParameter("nome");
 		model.addAttribute("nome", paramNome);
+
 		return "saudacao";
 	}
 
-	/* @RequestMapping("/processaFormOutraForma")
+	@RequestMapping("/processaFormOutraForma")
 	public String processFormDois(@RequestParam("nome") String nome, Model model){
 
 		nome = nome.toUpperCase();
-		String result = "Olá! " + nome;
+		String result = "Olá, " + nome + "! Seja bem-vindo!";
 		model.addAttribute("msg", result);
 		return "saudacao";
-	} */
+	}
     
 }
