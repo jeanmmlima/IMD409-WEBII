@@ -1,5 +1,7 @@
 package com.jeanlima.springmvcapp.model;
 
+import java.util.List;
+
 public class Aluno {
 
     private Integer id;
@@ -8,6 +10,7 @@ public class Aluno {
     private String curso;
     private String linguagem;
     private String email;
+    private List<String> sistemasOperacionas;
 
     public Aluno() {
     }
@@ -120,6 +123,16 @@ public class Aluno {
         } else if (!email.equals(other.email))
             return false;
         return true;
+    }
+
+
+    public List<String> getSistemasOperacionas() {
+        return sistemasOperacionas;
+    }
+
+
+    public void setSistemasOperacionas(List<String> sistemasOperacionas) {
+        this.sistemasOperacionas = sistemasOperacionas;
     }
     
 

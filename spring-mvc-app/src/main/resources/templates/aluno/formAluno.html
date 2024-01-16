@@ -24,11 +24,12 @@
             <input type="radio" th:field="*{linguagem}" th:value="Python" th:text="Python"/>
             <input type="radio" th:field="*{linguagem}" th:value="Javascript" th:text="Javascript"/>
         </p>
-        <!-- <p>
-            <input type="checkbox" th:field="*{sistemasOperacionas}" th:value="OSX" th:text="OSX" />
-            <input type="checkbox" th:field="*{sistemasOperacionas}" th:value="Windows" th:text="Windows" />
-            <input type="checkbox" th:field="*{sistemasOperacionas}" th:value="Linux" th:text="Linx" />
-        </p> -->
+        <p>
+            <div th:each="os : ${sistemasOperacionais}">
+                <input type="checkbox" th:field="*{sistemasOperacionas}" th:value="${os}" th:text="${os}" />
+            </div>
+            
+        </p>
         <p><input type="submit" value="Adicionar" /></p>
     </form>
     
