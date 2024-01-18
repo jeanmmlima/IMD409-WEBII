@@ -10,16 +10,9 @@
 <body>
     
   
-       <h1><p th:text="' Olá, ' + ${aluno.primeiroNome}"></h1>
-        <p th:text="'Seja bem-vindo, ' + ${aluno.primeiroNome} + ' ' + ${aluno.ultimoNome} "></p>
+       <h1><p th:text="' Olá, ' + ${aluno.nome}"></h1>
+        <p th:text="'Seja bem-vindo, ' + ${aluno.nome}"></p>
         <p th:text="'Seu curso é:  ' + ${aluno.curso}"></p>
-        <p th:text="'Linguagem favorita:  ' + ${aluno.linguagem}"></p>
-        <p>Sistemas Operacionais favoritos: </p>
-        <ul>
-            <li th:each="os : ${aluno.sistemasOperacionas}">
-                <span th:text="${os}"/>
-            </li>
-        </ul>    
 
         <br><br>
         <a href="getListaAlunos">Ver lista de alunos</a><br>

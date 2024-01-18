@@ -1,50 +1,41 @@
 package com.jeanlima.springmvcdatajpaapp.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.jeanlima.springmvcdatajpaapp.model.Aluno;
+import com.jeanlima.springmvcdatajpaapp.repository.AlunoRepository;
 
 
 
 @Component
 public class AlunoServiceImpl implements  AlunoService{
 
-    public List<Aluno> alunos = new ArrayList<Aluno>();    
+    @Autowired
+    AlunoRepository alunoRepository;
+ 
 
     @Override
     public void salvarAluno(Aluno aluno) {
-        System.out.println(aluno.toString());
-        try{
-            this.alunos.add(aluno);
-        } catch(Exception e){
-            e.printStackTrace();
-            System.out.println(e.toString());
-        }
-        
+        alunoRepository.salvar(aluno);
         
     }
 
     @Override
     public void deletarAluno(Aluno aluno) {
-       this.alunos.remove(aluno);
+        alunoRepository.deletar(aluno);
     }
 
     @Override
     public Aluno getAlunoById(Integer id) {
-        for (Aluno aluno : alunos) {
-            if(aluno.getId() == id){
-                return aluno;
-            }
-        }
-        return null;
+        return alunoRepository.obterPorId(id);
     }
 
     @Override
     public List<Aluno> getListaAluno() {
-        return this.alunos;
+        return alunoRepository.obterTodos();
     }
 
     

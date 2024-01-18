@@ -17,7 +17,7 @@
     <ul>
         <li th:each="aluno : ${alunos}">
             <span
-                th:text="${aluno.primeiroNome} +' '+ ${aluno.ultimoNome} + ' - Curso:  ' + ${aluno.curso} " />
+                th:text="${aluno.nome} + ' - Curso:  ' + ${aluno.curso} " />
         </li>
     </ul>
     <br><br>
@@ -27,14 +27,12 @@
           <tr>
             <th th:text="Nome"></th>
             <th th:text="Curso"></th>
-            <th th:text="Linguagem"></th>
           </tr>
         </thead>
         <tbody>
           <tr th:each="aluno: ${alunos}">
-            <td th:text="${aluno.primeiroNome}"></td>
+            <td th:text="${aluno.nome}"></td>
             <td th:text="${aluno.curso}"></td>
-            <td th:text="${aluno.linguagem}"></td>
           </tr>
         </tbody>
       </table>
