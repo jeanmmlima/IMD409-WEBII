@@ -11,7 +11,7 @@ import com.jeanlima.springmvcdatajpaapp.repository.AlunoRepository;
 
 
 @Component
-public class AlunoServiceImpl implements  AlunoService{
+public class AlunoServiceImpl implements AlunoService{
 
     @Autowired
     AlunoRepository alunoRepository;
@@ -19,23 +19,25 @@ public class AlunoServiceImpl implements  AlunoService{
 
     @Override
     public void salvarAluno(Aluno aluno) {
-        alunoRepository.salvar(aluno);
+        alunoRepository.save(aluno);
         
     }
 
     @Override
     public void deletarAluno(Aluno aluno) {
-        alunoRepository.deletar(aluno);
+        alunoRepository.delete(aluno);
     }
 
     @Override
     public Aluno getAlunoById(Integer id) {
-        return alunoRepository.obterPorId(id);
+        return alunoRepository.findById(id).map(aluno -> {
+            return aluno;
+        }).orElseThrow(() -> null);
     }
 
     @Override
     public List<Aluno> getListaAluno() {
-        return alunoRepository.obterTodos();
+        return alunoRepository.findAll();
     }
 
     
