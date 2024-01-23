@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jeanlima.springmvcdatajpaapp.model.Aluno;
+import com.jeanlima.springmvcdatajpaapp.model.Curso;
 import com.jeanlima.springmvcdatajpaapp.service.AlunoService;
+import com.jeanlima.springmvcdatajpaapp.service.CursoService;
 import com.jeanlima.springmvcdatajpaapp.service.MockDataService;
 
 
@@ -26,20 +28,23 @@ public class AlunoController {
     AlunoService alunoService;
 
     @Autowired
-    MockDataService mockDataService;
+    CursoService cursoService;
 
 
     @RequestMapping("/showForm")
     public String showFormAluno(Model model){
 
         model.addAttribute("aluno", new Aluno());
-        model.addAttribute("cursos", mockDataService.getCursos());
+        model.addAttribute("cursos", cursoService.getCursos());
         return "aluno/formAluno";
     }
 
     @RequestMapping("/addAluno")
-    public String showFormAluno(@ModelAttribute("aluno") Aluno aluno,  Model model){
+    public String showFormAluno(@ModelAttribute("aluno") Aluno aluno, Model model){
 
+
+        Curso cursoSelecionado = cursoService.getCursoById(aluno.getCurso().getId());
+        aluno.setCurso(cursoSelecionado);
         alunoService.salvarAluno(aluno);
         model.addAttribute("aluno", aluno);
         return "aluno/paginaAluno";
