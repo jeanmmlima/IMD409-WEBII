@@ -17,6 +17,12 @@
                 <option th:each="curso: ${cursos}" th:value="${curso.id}" th:text="${curso.descricao}">
             </select>
         </p>
+        <p>Disciplinas
+            <div th:each="disciplina : ${disciplinas}">
+                <input type="checkbox" th:name="disciplinaIds" th:value="${disciplina.id}" th:text="${disciplina.codigo}+' '+${disciplina.descricao}" />
+            </div>
+            
+        </p>
 
         <p><input type="submit" value="Adicionar" /></p>
     </form>

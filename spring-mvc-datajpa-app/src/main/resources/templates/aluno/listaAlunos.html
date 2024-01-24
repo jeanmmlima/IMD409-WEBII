@@ -27,12 +27,14 @@
           <tr>
             <th th:text="Nome"></th>
             <th th:text="Curso"></th>
+            <th th:text="Disciplina"></th>
           </tr>
         </thead>
         <tbody>
           <tr th:each="aluno: ${alunos}">
             <td th:text="${aluno.nome}"></td>
             <td th:text="${aluno.curso}"></td>
+            <td th:text="${aluno.disciplinas}"></td>
           </tr>
         </tbody>
       </table>
