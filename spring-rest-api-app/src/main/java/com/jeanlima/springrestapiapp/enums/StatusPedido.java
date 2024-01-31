@@ -1,4 +1,4 @@
-package com.jeanlima.springrestapi.enums;
+package com.jeanlima.springrestapiapp.enums;
 
 public enum StatusPedido {
 
