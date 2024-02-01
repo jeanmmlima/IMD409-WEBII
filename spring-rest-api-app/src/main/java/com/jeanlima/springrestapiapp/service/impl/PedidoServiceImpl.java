@@ -1,11 +1,13 @@
 package com.jeanlima.springrestapiapp.service.impl;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import com.jeanlima.springrestapiapp.enums.StatusPedido;
+import com.jeanlima.springrestapiapp.exception.PedidoNaoEncontradoException;
 import com.jeanlima.springrestapiapp.exception.RegraNegocioException;
 import com.jeanlima.springrestapiapp.model.Cliente;
 import com.jeanlima.springrestapiapp.model.ItemPedido;
@@ -74,6 +76,19 @@ public class PedidoServiceImpl implements PedidoService {
                     return itemPedido;
                 }).collect(Collectors.toList());
 
+    }
+    @Override
+    public Optional<Pedido> obterPedidoCompleto(Integer id) {
+        return repository.findByIdFetchItens(id);
+    }
+    @Override
+    public void atualizaStatus(Integer id, StatusPedido statusPedido) {
+        repository
+        .findById(id)
+        .map( pedido -> {
+            pedido.setStatus(statusPedido);
+            return repository.save(pedido);
+        }).orElseThrow(() -> new PedidoNaoEncontradoException() );
     }
     
     
