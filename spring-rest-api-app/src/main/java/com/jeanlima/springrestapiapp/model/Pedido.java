@@ -87,6 +87,56 @@ public class Pedido {
     public void setStatus(StatusPedido status) {
         this.status = status;
     }
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
+        result = prime * result + ((dataPedido == null) ? 0 : dataPedido.hashCode());
+        result = prime * result + ((total == null) ? 0 : total.hashCode());
+        result = prime * result + ((itens == null) ? 0 : itens.hashCode());
+        result = prime * result + ((status == null) ? 0 : status.hashCode());
+        return result;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Pedido other = (Pedido) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        if (cliente == null) {
+            if (other.cliente != null)
+                return false;
+        } else if (!cliente.equals(other.cliente))
+            return false;
+        if (dataPedido == null) {
+            if (other.dataPedido != null)
+                return false;
+        } else if (!dataPedido.equals(other.dataPedido))
+            return false;
+        if (total == null) {
+            if (other.total != null)
+                return false;
+        } else if (!total.equals(other.total))
+            return false;
+        if (itens == null) {
+            if (other.itens != null)
+                return false;
+        } else if (!itens.equals(other.itens))
+            return false;
+        if (status != other.status)
+            return false;
+        return true;
+    }
 
     
     
