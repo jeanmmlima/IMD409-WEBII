@@ -32,8 +32,10 @@ public class SecurityConfig {
                 .requestMatchers("/api/pedidos/**") 
                     .hasAnyRole("USER","ADMIN") 
                 .anyRequest().authenticated()
+            
                 
             )
+            .
             //habilitado por padrão
             .csrf(AbstractHttpConfigurer::disable)
             .httpBasic(Customizer.withDefaults()); //possibilita "logar" com o headers de autenticação

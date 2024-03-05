@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import com.jeanlima.springrestapiapp.exception.SenhaInvalidaException;
 import com.jeanlima.springrestapiapp.model.Usuario;
 import com.jeanlima.springrestapiapp.repository.UsuarioRepository;
 
@@ -30,6 +32,17 @@ public class UsuarioServiceImpl implements UserDetailsService {
     @Transactional
     public Usuario salvar(Usuario usuario) {
         return repository.save(usuario);
+    }
+
+    public UserDetails autenticar( Usuario usuario ){
+        UserDetails user = loadUserByUsername(usuario.getLogin());
+        boolean senhasBatem = passwordEncoder.matches( usuario.getSenha(), user.getPassword() );
+
+        if(senhasBatem){
+            return user;
+        }
+
+        throw new SenhaInvalidaException();
     }
 
     /*
