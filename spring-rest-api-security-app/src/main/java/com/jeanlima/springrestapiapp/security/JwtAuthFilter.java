@@ -48,9 +48,21 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 // autenticar o usuário
                 UsernamePasswordAuthenticationToken user = new UsernamePasswordAuthenticationToken(usuario, null,
                         usuario.getAuthorities());
-                // Configuração dos detalhes da autenticação
+                /*
+                 * detalhes da autenticação para o objeto user com base nos detalhes da solicitação HTTP 
+                 * fornecidos pela instância de HttpServletRequest. 
+                 * Isso é útil para registrar informações adicionais sobre a autenticação, 
+                 * especialmente em um contexto de aplicativo da web - ip do cliente, agente do usário...
+                 */
                 user.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
                 // Configuração da autenticação no contexto de segurança do Spring
+                /*
+                 * está configurando a instância de autenticação user como a instância 
+                 * atualmente autenticada no contexto de segurança. 
+                 * Isso significa que o usuário associado a essa instância de autenticação 
+                 * será considerado o usuário autenticado para a duração da solicitação ou da sessão,
+                 *  dependendo da configuração.
+                 */
                 SecurityContextHolder.getContext().setAuthentication(user);
             }
         }

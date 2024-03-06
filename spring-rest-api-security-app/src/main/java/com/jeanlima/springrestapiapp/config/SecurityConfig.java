@@ -54,8 +54,32 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
                 
             )
-            .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class)
+            /*sessionManagement
+             * é um método usado para configurar a política de criação de sessão 
+             * uma expressão lambda é usada para configurar a política de criação de sessão como 
+             * STATELESS (sem estado). 
+             * Isso significa que as sessões não serão criadas pelo framework e 
+             * cada solicitação será tratada independentemente, sem depender de estado de sessão. 
+             * Isso é frequentemente usado em APIs RESTful ou aplicativos da web sem estado, 
+             * onde não é necessário manter o estado da sessão.
+             */
+            .sessionManagement((session) -> 
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            
+            /*
+             * No Java Spring Security, o método addFilterBefore() é usado para adicionar um filtro 
+             * antes de um filtro específico na cadeia de filtros de segurança. 
+             * Isso significa que o filtro JWT será executado antes do filtro de autenticação 
+             * de nome de usuário e senha. 
+             * O filtro JWT é usado para validar tokens JWT em solicitações HTTP para 
+             * autenticação e autorização, 
+             * Adicionando o filtro JWT antes do UsernamePasswordAuthenticationFilter, 
+             * você está configurando o sistema para primeiro verificar se há um token JWT válido antes de 
+             * tentar autenticar com nome de usuário e senha. Isso é comum em aplicativos que usam autenticação baseada em tokens JWT.
+             */
+            .addFilterBefore(
+                jwtFilter(), 
+                UsernamePasswordAuthenticationFilter.class)
 
             //habilitado por padrão
             .csrf(AbstractHttpConfigurer::disable);
