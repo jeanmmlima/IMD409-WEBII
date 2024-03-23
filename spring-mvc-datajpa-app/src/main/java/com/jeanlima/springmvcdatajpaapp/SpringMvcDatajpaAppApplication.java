@@ -36,32 +36,32 @@ public class SpringMvcDatajpaAppApplication {
              * Cadastrando cursos
              */
 
-            cursoRepository.save(new Curso("BTI"));
+            /* cursoRepository.save(new Curso("BTI"));
             cursoRepository.save(new Curso("Engenharia de Software"));
             cursoRepository.save(new Curso("Ciência da Computação"));
             cursoRepository.save(new Curso("Engenharia de Computação"));
 
             System.out.println("Cursos cadastrados");
             List<Curso> cursos = cursoRepository.findAll();
-            cursos.forEach(System.out::println);
+            cursos.forEach(System.out::println); */
 
             /**
              * Cadastrando disciplinas
              */
 
-            disciplinaRepository.save(new Disciplina("Desenvolvimento de Sistemas Web I", "IMD0404"));
+            /* disciplinaRepository.save(new Disciplina("Desenvolvimento de Sistemas Web I", "IMD0404"));
             disciplinaRepository.save(new Disciplina("Desenvolvimento Sistemas Web II", "IMD0409"));
             disciplinaRepository.save(new Disciplina("Desenvolvimento Sistemas para Dispositivos Móveis", "IMD0409"));
 
             System.out.println("Disciplinas cadastradas");
             List<Disciplina> disciplinas = disciplinaRepository.findAll();
-            disciplinas.forEach(System.out::println);
+            disciplinas.forEach(System.out::println); */
 
             /*
              * Cadastrando alunos
              */
 
-             Aluno aluno = new Aluno("Jose Silva");
+             /* Aluno aluno = new Aluno("Jose Silva");
             aluno.setCurso(cursos.get(0));
             aluno.setDisciplinas(disciplinas);
              Aluno aluno2 = new Aluno("João Maria");
@@ -77,14 +77,14 @@ public class SpringMvcDatajpaAppApplication {
  
                         
             //FETCH LAZY OR EAGER?
-            List<Aluno> alunos = alunoRepository.findAll();
-            System.out.println("LISTANDO ESTUDANTES E DISCIPLINAS - SEM FETCH");
-           /* List<Aluno> alunos = alunoRepository.findAllFetchDisciplinas();
-           System.out.println("LISTANDO ESTUDANTES E DISCIPLINAS - FETCH"); */
+            // List<Aluno> alunos = alunoRepository.findAll();
+           // System.out.println("LISTANDO ESTUDANTES E DISCIPLINAS - SEM FETCH"); 
+           List<Aluno> alunos = alunoRepository.findAllFetchDisciplinas();
+           System.out.println("LISTANDO ESTUDANTES E DISCIPLINAS - FETCH");
             alunos.forEach(
                 e -> {
                     System.out.println(e.toString());
-                    //System.out.println(e.getDisciplinas().toString());
+                    System.out.println(e.getDisciplinas().toString());
                 }
                 
             );
@@ -115,8 +115,8 @@ public class SpringMvcDatajpaAppApplication {
 
 
             
-
-		};
+        */
+		}; 
 	}
 
 	public static void main(String[] args) {

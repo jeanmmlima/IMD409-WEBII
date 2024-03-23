@@ -1,5 +1,6 @@
 package com.jeanlima.springmvcdatajpaapp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,21 +41,22 @@ public class AlunoController {
     @RequestMapping("/showForm")
     public String showFormAluno(Model model){
 
-        model.addAttribute("aluno", new Aluno());
+        Aluno aluno = new Aluno();
+        Curso curso = new Curso();
+        List<Disciplina> disciplinas = new ArrayList<Disciplina>();
+        aluno.setCurso(curso);
+        aluno.setDisciplinas(disciplinas);
+
+        model.addAttribute("aluno", aluno);
         model.addAttribute("cursos", cursoService.getCursos());
         model.addAttribute("disciplinas", disciplinaService.getDisciplinas());
         return "aluno/formAluno";
     }
 
     @RequestMapping("/addAluno")
-    public String showFormAluno(@ModelAttribute("aluno") Aluno aluno, @RequestParam("disciplinaIds") List<Integer> disciplinaIds, Model model){
-
-
-        Curso cursoSelecionado = cursoService.getCursoById(aluno.getCurso().getId());
-        aluno.setCurso(cursoSelecionado);
-
-        List<Disciplina> disciplinasSelecionadas = disciplinaService.getDisciplinasByIds(disciplinaIds);
-        aluno.setDisciplinas(disciplinasSelecionadas);
+    public String showFormAluno(
+        @ModelAttribute("aluno") Aluno aluno,  
+        Model model){
 
         alunoService.salvarAluno(aluno);
 
