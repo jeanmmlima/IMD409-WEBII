@@ -24,7 +24,16 @@ public class OlaController {
 	@RequestMapping("/processaForm")
 	public String processForm(HttpServletRequest request, Model model){
 
+		
+
 		String paramNome = request.getParameter("nome");
+
+		/*
+		 * Spring Framework em conjunto com o Thymeleaf, 
+		 * geralmente você passa os atributos para o modelo usando o 
+		 * objeto Model fornecido pelo Spring
+		 */
+
 		model.addAttribute("nome", paramNome);
 
 		return "saudacao";
