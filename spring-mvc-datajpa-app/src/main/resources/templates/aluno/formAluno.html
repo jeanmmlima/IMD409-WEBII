@@ -13,13 +13,15 @@
     <form action="#" th:action="@{/aluno/addAluno}" th:object="${aluno}" method="post">
         <p>Nome: <input type="text" th:field="*{nome}" placeholder="Insira seu nome" /></p>
         <p>Curso: 
-            <select th:field="*{curso.id}">
-                <option th:each="curso: ${cursos}" th:value="${curso.id}" th:text="${curso.descricao}">
+            <select th:field="*{curso}">
+                <option th:each="curso : ${cursos}" 
+                        th:value="${curso.id}"
+                        th:text="${curso.descricao}"/>
             </select>
         </p>
         <p>Disciplinas
             <div th:each="disciplina : ${disciplinas}">
-                <input type="checkbox" th:name="disciplinaIds" th:value="${disciplina.id}" th:text="${disciplina.codigo}+' '+${disciplina.descricao}" />
+                <input type="checkbox" th:field="*{disciplinas}" th:value="${disciplina.id}" th:text="${disciplina.codigo}+' '+${disciplina.descricao}" />
             </div>
             
         </p>
