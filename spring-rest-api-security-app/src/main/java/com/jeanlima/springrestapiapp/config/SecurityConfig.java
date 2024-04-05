@@ -43,6 +43,11 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests((authz) ->                                     
             authz
+                .requestMatchers(
+                    "/v3/api-docs/**", 
+                "/swagger-resources/**", 
+                "/swagger-ui/**")
+                    .permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/usuarios/**")
                     .permitAll()
                 .requestMatchers("/api/clientes/**")
