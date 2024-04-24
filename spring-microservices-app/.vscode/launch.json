@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-WorkerApplication<worker>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.jeanlima.worker.WorkerApplication",
+            "projectName": "worker",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PayrollApplication<payroll>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.jeanlima.payroll.PayrollApplication",
+            "projectName": "payroll",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
