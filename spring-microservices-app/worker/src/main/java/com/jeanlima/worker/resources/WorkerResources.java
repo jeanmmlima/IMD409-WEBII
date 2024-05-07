@@ -44,12 +44,14 @@ public class WorkerResources {
          * a requisição lança exceção e vai para a rota alterntiva do hystrix
          * timeout pode ser personalizado no client ribbon - no caso payroll que faz as requisições
          */
+        /* 
         try {
             Thread.sleep(3000L);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        */
 
         logger.info("PORT = "+env.getProperty("local.server.port"));
 
