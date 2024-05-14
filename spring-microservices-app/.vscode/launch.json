@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "UserApplication",
+            "request": "launch",
+            "mainClass": "com.jeanlima.user.UserApplication",
+            "projectName": "user"
+        },
+        {
+            "type": "java",
             "name": "EurekaServerApplication",
             "request": "launch",
             "mainClass": "com.jeanlima.eurekaserver.EurekaServerApplication",
