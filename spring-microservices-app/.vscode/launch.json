@@ -64,6 +64,16 @@
             "projectName": "config-server",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-OauthApplication<oauth>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.jeanlima.oauth.OauthApplication",
+            "projectName": "oauth",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
